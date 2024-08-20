@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Tidely",
-    "slug": "Tidely",
-    "scheme": "Tidely",
+    "name": "RipTide",
+    "slug": "RipTide",
+    "scheme": "RipTide",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
