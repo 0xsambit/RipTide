@@ -1,16 +1,9 @@
-import {
-	Image,
-	ImageBackground,
-	ScrollView,
-	StyleSheet,
-	Text,
-	View,
-} from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import { StatusBar } from "expo-status-bar";
+import CustomButton from "../components/CustomButton";
 
-const index = () => {
+const Index = () => {
 	return (
 		<SafeAreaView style={{ backgroundColor: "#000000" }}>
 			<ImageBackground
@@ -23,12 +16,16 @@ const index = () => {
 						Because the ocean deserves respect, and you deserve peace.
 					</Text>
 				</View>
+				<CustomButton
+					title='Continue With Email'
+					specialStyles={styles.button}
+				/>
 			</ImageBackground>
 		</SafeAreaView>
 	);
 };
 
-export default index;
+export default Index;
 
 const styles = StyleSheet.create({
 	bgImage: {
@@ -50,5 +47,10 @@ const styles = StyleSheet.create({
 		fontFamily: "Amita-Bold",
 		textAlign: "center",
 		width: "90%",
+	},
+	button: {
+		backgroundColor: "red",
+		width: "100%",
+		fontSize: 20,
 	},
 });
