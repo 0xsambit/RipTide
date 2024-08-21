@@ -2,7 +2,7 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import CustomButton from "../components/CustomButton";
-
+import { router } from "expo-router";
 const Index = () => {
 	return (
 		<SafeAreaView style={{ backgroundColor: "#000000" }}>
@@ -19,6 +19,7 @@ const Index = () => {
 				<CustomButton
 					title='Continue With Email'
 					specialStyles={styles.button}
+					handlePress={() => router.push("/sign-in")}
 				/>
 			</ImageBackground>
 		</SafeAreaView>
@@ -49,8 +50,11 @@ const styles = StyleSheet.create({
 		width: "90%",
 	},
 	button: {
-		backgroundColor: "red",
-		width: "100%",
-		fontSize: 20,
+		marginTop: 150,
+		backgroundColor: "rgba(28, 34, 34, 0.7)",
+		borderRadius: 30,
+		color: "white",
+		paddingHorizontal: 50,
+		paddingVertical: 10,
 	},
 });

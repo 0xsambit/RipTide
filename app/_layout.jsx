@@ -17,6 +17,7 @@ const RootLayout = () => {
 		"Allison-Regular": require("../assets/fonts/Allison-Regular.ttf"),
 		"Amita-Regular": require("../assets/fonts/Amita-Regular.ttf"),
 		"Amita-Bold": require("../assets/fonts/Amita-Bold.ttf"),
+		"AD-Regular": require("../assets/fonts/ArchitectsDaughter-Regular.ttf"),
 	});
 	useEffect(() => {
 		if (error) throw error;

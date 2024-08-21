@@ -1,15 +1,17 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
-const CustomButton = ({ title, specialStyles }) => {
+const CustomButton = ({ title, specialStyles, handlePress }) => {
 	return (
 		<TouchableOpacity
 			style={{
 				justifyContent: "center",
 				alignItems: "center",
 				margin: "auto",
-			}}>
-			<Text style={specialStyles}>{title}</Text>
+			}}
+			activeOpacity={0.7}
+			onPress={handlePress}>
+			<Text style={[styles.containerStyles, specialStyles]}>{title}</Text>
 		</TouchableOpacity>
 	);
 };
@@ -17,5 +19,9 @@ const CustomButton = ({ title, specialStyles }) => {
 export default CustomButton;
 
 const styles = StyleSheet.create({
-	containerStyles: {},
+	containerStyles: {
+		fontSize: 25,
+		fontFamily: "AD-Regular",
+		width: "100%",
+	},
 });
