@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import CustomButton from "../components/CustomButton";
@@ -12,6 +12,10 @@ const Index = () => {
 				resizeMode='cover'>
 				<View style={styles.viewContainer1}>
 					<Text style={styles.title}>RipTide</Text>
+					<Image
+						source={require("../assets/icons/vectorBlack.png")}
+						style={{ bottom: 40 }}
+					/>
 					<Text style={styles.subtitle}>
 						Because the ocean deserves respect, and you deserve peace.
 					</Text>
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		color: "black",
-		fontSize: 110,
+		fontSize: 105,
 		fontFamily: "Allison-Regular",
 	},
 	subtitle: {
@@ -51,7 +55,7 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		marginTop: 150,
-		backgroundColor: "rgba(28, 34, 34, 0.7)",
+		backgroundColor: "rgba(28, 34, 34, 0.9)",
 		borderRadius: 30,
 		color: "white",
 		paddingHorizontal: 50,
