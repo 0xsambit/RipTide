@@ -18,6 +18,11 @@ const RootLayout = () => {
 		"Amita-Regular": require("../assets/fonts/Amita-Regular.ttf"),
 		"Amita-Bold": require("../assets/fonts/Amita-Bold.ttf"),
 		"AD-Regular": require("../assets/fonts/ArchitectsDaughter-Regular.ttf"),
+		"CM-Bold": require("../assets/fonts/CormorantUpright-Bold.ttf"),
+		"CM-Light": require("../assets/fonts/CormorantUpright-Light.ttf"),
+		"CM-Medium": require("../assets/fonts/CormorantUpright-Medium.ttf"),
+		"CM-Regular": require("../assets/fonts/CormorantUpright-Regular.ttf"),
+		"CM-SemiBold": require("../assets/fonts/CormorantUpright-SemiBold.ttf"),
 	});
 	useEffect(() => {
 		if (error) throw error;
