@@ -11,14 +11,16 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import Input from "../../components/Input";
+import CustomButton from "../../components/CustomButton";
+import { router } from "expo-router";
 const SignIn = () => {
 	const [form, setForm] = useState({
-		email: "",
+		username: "",
 		password: "",
 	});
 
 	const submit = async () => {
-		if (!form.email || !form.password) {
+		if (!form.username || !form.password) {
 			Alert.alert("Error", "Please fill in all the fields");
 			return;
 		}
@@ -39,20 +41,32 @@ const SignIn = () => {
 						<Text style={styles.subtitle}>Sign In</Text>
 					</View>
 					<Input
-						value={form.email}
+						value={form.username}
 						title='Email'
-						placeholder='Email address'
+						placeholder='Username'
 						otherStyles={{ marginTop: 10 }}
 						handleChangeText={(e) => setForm({ ...form, email: e })}
-						keyboardType='email-address'
 					/>
 					<Input
-						value={form.email}
+						value={form.password}
 						title='Password'
 						placeholder='Password'
-						otherStyles={{ marginTop: 10 }}
 						handleChangeText={(e) => setForm({ ...form, password: e })}
 					/>
+					<CustomButton
+						title='Login'
+						specialStyles={styles.loginButton}
+						handlePress={() => router.push("/home")}
+					/>
+					<Text
+						style={{
+							fontFamily: "Poppins-SemiBold",
+							fontSize: 24,
+							textAlign: "center",
+						}}>
+						OR,
+					</Text>
+					<CustomButton title='Sign In with' specialStyles={styles.OAuth} />
 				</ScrollView>
 			</ImageBackground>
 			<StatusBar backgroundColor='black' />
@@ -80,5 +94,17 @@ const styles = StyleSheet.create({
 		color: "white",
 		fontSize: 36,
 		fontFamily: "CM-Regular",
+		marginTop: -30,
+		marginBottom: 30,
 	},
+	loginButton: {
+		fontFamily: "CM-Bold",
+		fontSize: 24,
+		backgroundColor: "rgba(255,255,255,0.9)",
+		paddingHorizontal: 60,
+		paddingVertical: 8,
+		borderRadius: 40,
+		marginVertical: 10,
+	},
+	OAuth: {},
 });
