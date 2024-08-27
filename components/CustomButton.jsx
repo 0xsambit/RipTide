@@ -21,7 +21,6 @@ export default CustomButton;
 const styles = StyleSheet.create({
 	containerStyles: {
 		fontSize: 25,
-		fontFamily: "AD-Regular",
 		width: "100%",
 	},
 });
