@@ -60,5 +60,6 @@ const styles = StyleSheet.create({
 		color: "white",
 		paddingHorizontal: 50,
 		paddingVertical: 10,
+		fontFamily: "AD-Regular",
 	},
 });
