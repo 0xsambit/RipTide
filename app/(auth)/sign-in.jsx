@@ -66,7 +66,11 @@ const SignIn = () => {
 						}}>
 						OR,
 					</Text>
-					<CustomButton title='Sign In with' specialStyles={styles.OAuth} />
+					<CustomButton
+						title='Sign In with'
+						specialStyles={styles.OAuth}
+						icon={require("../../assets/icons/google.png")}
+					/>
 				</ScrollView>
 			</ImageBackground>
 			<StatusBar backgroundColor='black' />
@@ -106,5 +110,13 @@ const styles = StyleSheet.create({
 		borderRadius: 40,
 		marginVertical: 10,
 	},
-	OAuth: {},
+	OAuth: {
+		fontFamily: "CM-Bold",
+		fontSize: 24,
+		backgroundColor: "rgba(255,255,255,0.9)",
+		paddingHorizontal: 60,
+		paddingVertical: 8,
+		borderRadius: 40,
+		marginVertical: 10,
+	},
 });
