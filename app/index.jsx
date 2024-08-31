@@ -1,31 +1,31 @@
-import { ImageBackground, StyleSheet, Text, View, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { images, icons } from "../constants";
+import { StatusBar } from "expo-status-bar";
 import CustomButton from "../components/CustomButton";
 import { router } from "expo-router";
+
 const Index = () => {
 	return (
-		<SafeAreaView style={{ backgroundColor: "#000000" }}>
-			<ImageBackground
-				source={require("../assets/images/beach1.jpeg")}
-				style={styles.bgImage}
-				resizeMode='cover'>
-				<View style={styles.viewContainer1}>
-					<Text style={styles.title}>RipTide</Text>
-					<Image
-						source={require("../assets/icons/vectorBlack.png")}
-						style={{ bottom: 40 }}
-					/>
+		<SafeAreaView style={{ flex: 1 }}>
+			<ImageBackground source={images.beach2} style={styles.background}>
+				<View style={styles.container}>
+					<View style={styles.viewContainer}>
+						<Text style={styles.title}>RipTide</Text>
+						<Image source={icons.vectorBlack} style={styles.icon} />
+					</View>
 					<Text style={styles.subtitle}>
 						Because the ocean deserves respect, and you deserve peace.
 					</Text>
+					<CustomButton
+						title='Explore'
+						specialStyles={styles.button}
+						handlePress={() => router.push("/sign-in")}
+					/>
 				</View>
-				<CustomButton
-					title='Continue With Email'
-					specialStyles={styles.button}
-					handlePress={() => router.push("/sign-in")}
-				/>
 			</ImageBackground>
+			<StatusBar style='light' backgroundColor='#000000' />
 		</SafeAreaView>
 	);
 };
@@ -33,33 +33,45 @@ const Index = () => {
 export default Index;
 
 const styles = StyleSheet.create({
-	bgImage: {
-		height: "100%",
-	},
-	viewContainer1: {
+	background: {
+		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		marginTop: 30,
+	},
+	container: {
+		justifyContent: "center",
+		alignItems: "center",
+		marginBottom: 180,
+	},
+	viewContainer: {
+		justifyContent: "center",
+		alignItems: "center",
+		marginBottom: 20,
 	},
 	title: {
-		color: "black",
-		fontSize: 105,
-		fontFamily: "Allison-Regular",
+		fontSize: 110,
+		fontFamily: "Allura-Regular",
+	},
+	icon: {
+		marginTop: -55,
 	},
 	subtitle: {
-		color: "black",
-		fontSize: 20,
-		fontFamily: "Amita-Bold",
+		fontFamily: "Poppins-Medium",
+		fontSize: 24,
 		textAlign: "center",
-		width: "90%",
+		marginHorizontal: 30,
+		color: "white",
+		marginBottom: 20,
 	},
 	button: {
-		marginTop: 150,
-		backgroundColor: "rgba(28, 34, 34, 0.9)",
-		borderRadius: 30,
+		backgroundColor: "#0F1E20",
 		color: "white",
-		paddingHorizontal: 50,
-		paddingVertical: 10,
-		fontFamily: "AD-Regular",
+		width: 200,
+		height: 50,
+		borderRadius: 10,
+		textAlign: "center",
+		fontFamily: "Poppins-SemiBold",
+		lineHeight: 50,
+		marginTop: 10,
 	},
 });
