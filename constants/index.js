@@ -1,2 +1,3 @@
 import icons from "./icons";
-export { icons };
+import images from "./image";
+export { icons, images };
