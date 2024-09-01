@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	icon: {
-		width: 50,
-		height: 50,
+		width: 45,
+		height: 45,
 		marginTop: 10,
 	},
 });
