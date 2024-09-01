@@ -2,6 +2,9 @@ import {
 	Alert,
 	Image,
 	ImageBackground,
+	KeyboardAvoidingView,
+	Platform,
+	ScrollView, // Import ScrollView
 	StyleSheet,
 	Text,
 	View,
@@ -14,58 +17,111 @@ import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 
 const SignIn = () => {
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [form, setForm] = useState({
 		username: "",
 		password: "",
 	});
+
 	const submit = async () => {
-		Alert.alert("Error", "Invalid username or password", [{ text: "OK" }]);
-		return;
+		if (!form.username || !form.password) {
+			Alert.alert("Error", "Please fill all fields", [{ text: "OK" }]);
+			return;
+		}
+
+		setIsSubmitting(true);
 	};
+
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<ImageBackground source={images.sky} style={{ flex: 1 }} blurRadius={20}>
 				<View style={styles.overlay}>
-					<View style={{ justifyContent: "center", alignItems: "center" }}>
-						<Text style={styles.title}>RipTide</Text>
-						<Image source={icons.vectorWhite} />
-					</View>
-					<View style={styles.content}>
-						<Text style={styles.welcomeText}>Welcome Back</Text>
-						<Text style={styles.loginText}>Login to continue</Text>
-						<Input
-							title='Username'
-							value={form.username}
-							placeholder='Username'
-							handleChangeText={(e) => setForm({ ...form, username: e })}
-						/>
-						<Input
-							title='Password'
-							value={form.password}
-							placeholder='Password'
-							handleChangeText={(e) => setForm({ ...form, password: e })}
-						/>
-						<CustomButton
-							title='Log In'
-							specialStyles={styles.button}
-							handlePress={() => router.push("/home")}
-						/>
-						<Text
-							style={{
-								fontSize: 18,
-								fontFamily: "Poppins-SemiBold",
-								marginTop: 10,
-							}}>
-							Not a member?{" "}
-							<Link
-								href='/sign-up'
-								style={{
-									textDecorationLine: "underline",
-								}}>
-								Sign Up
-							</Link>
-						</Text>
-					</View>
+					<KeyboardAvoidingView
+						style={{ flex: 1 }}
+						behavior={Platform.OS === "ios" ? "padding" : "height"}
+						keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
+						<ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
+							<View style={{ justifyContent: "center", alignItems: "center" }}>
+								<Text style={styles.title}>RipTide</Text>
+								<Image source={icons.vectorWhite} />
+							</View>
+							<View style={styles.content}>
+								<Text style={styles.welcomeText}>Welcome Back</Text>
+								<Text style={styles.loginText}>Login to continue</Text>
+								<Input
+									title='Username'
+									value={form.username}
+									placeholder='Username'
+									handleChangeText={(e) => setForm({ ...form, username: e })}
+								/>
+								<Input
+									title='Password'
+									value={form.password}
+									placeholder='Password'
+									handleChangeText={(e) => setForm({ ...form, password: e })}
+								/>
+								<CustomButton
+									title='Log In'
+									specialStyles={styles.button}
+									handlePress={() => router.push("/home")}
+								/>
+								<Text
+									style={{
+										fontSize: 18,
+										fontFamily: "Poppins-SemiBold",
+										marginTop: 10,
+									}}>
+									Not a member?{" "}
+									<Link
+										href='/sign-up'
+										style={{
+											textDecorationLine: "underline",
+										}}>
+										Sign Up
+									</Link>
+								</Text>
+								<Link
+									href='#'
+									style={{
+										textDecorationLine: "underline",
+										fontFamily: "Poppins-SemiBold",
+										marginTop: 70,
+										fontSize: 18,
+									}}>
+									Privacy Policy
+								</Link>
+								<View
+									style={{
+										flexDirection: "row",
+										alignItems: "center",
+										marginTop: 20,
+									}}>
+									<View style={[styles.line, { marginLeft: 50 }]}></View>
+									<Text
+										style={{
+											fontSize: 16,
+											textAlign: "center",
+											marginHorizontal: 10,
+											fontWeight: "bold",
+											lineHeight: 20,
+										}}>
+										Or
+									</Text>
+									<View style={[styles.line, { marginRight: 50 }]}></View>
+								</View>
+								<View
+									style={{
+										flexDirection: "row",
+										width: "100%",
+										alignItems: "center",
+										justifyContent: "space-evenly",
+									}}>
+									<Image source={icons.google} style={styles.icon} />
+									<Image source={icons.facebook} style={styles.icon} />
+								</View>
+							</View>
+						</ScrollView>
+					</KeyboardAvoidingView>
 				</View>
 			</ImageBackground>
 		</SafeAreaView>
@@ -76,16 +132,16 @@ export default SignIn;
 
 const styles = StyleSheet.create({
 	title: {
-		fontSize: 75,
+		fontSize: 77,
 		fontFamily: "Allura-Regular",
 		color: "white",
 		textAlign: "center",
+		transform: [{ translateY: 50 }],
 	},
 	overlay: {
 		...StyleSheet.absoluteFillObject,
-		backgroundColor: "rgba(0, 0, 0, 0.4)",
+		backgroundColor: "rgba(0, 0, 0, 0.3)",
 	},
-
 	content: {
 		width: "100%",
 		alignItems: "center",
@@ -114,5 +170,15 @@ const styles = StyleSheet.create({
 		fontFamily: "Poppins-SemiBold",
 		lineHeight: 50,
 		marginTop: 30,
+	},
+	line: {
+		height: 1,
+		backgroundColor: "black",
+		flex: 1,
+	},
+	icon: {
+		width: 50,
+		height: 50,
+		marginTop: 10,
 	},
 });

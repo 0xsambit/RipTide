@@ -11,7 +11,6 @@ import { icons } from "../constants";
 
 const Input = ({ title, value, placeholder, handleChangeText }) => {
 	const [showPassword, setShowPassword] = useState(false);
-
 	return (
 		<View style={styles.inputView}>
 			<View style={styles.inputContainer}>
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
 	textinput: {
 		flex: 1,
 		padding: 5,
-		color: "white",
+		color: "black",
 		fontFamily: "Poppins-Medium",
 		fontSize: 15,
 	},
