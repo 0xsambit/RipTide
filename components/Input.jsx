@@ -44,31 +44,28 @@ export default Input;
 
 const styles = StyleSheet.create({
 	inputView: {
-		marginVertical: 10,
-		marginHorizontal: 20,
+		marginTop: 20,
 	},
 	inputContainer: {
+		width: "75%",
 		flexDirection: "row",
-		alignItems: "center",
-		borderRadius: 30,
-		paddingHorizontal: 10,
-		backgroundColor: "rgba(0, 0, 0, 0.8)",
-		position: "relative",
-		overflow: "hidden",
+		borderBottomWidth: 2,
+		borderBottomColor: "rgba(255,255,255,0.7)",
 	},
 	textinput: {
 		flex: 1,
-		fontSize: 16,
-		paddingVertical: 15,
+		padding: 5,
 		color: "white",
-		paddingHorizontal: 20,
+		fontFamily: "Poppins-Medium",
+		fontSize: 15,
 	},
+
 	eyeContainer: {
 		padding: 5,
 	},
 	eye: {
 		width: 25,
 		height: 25,
-		tintColor: "#777",
+		tintColor: "#fff",
 	},
 });

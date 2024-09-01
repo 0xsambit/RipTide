@@ -2,78 +2,72 @@ import {
 	Alert,
 	Image,
 	ImageBackground,
-	ScrollView,
 	StyleSheet,
 	Text,
 	View,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
+import { images, icons } from "../../constants";
 import Input from "../../components/Input";
 import CustomButton from "../../components/CustomButton";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
+
 const SignIn = () => {
 	const [form, setForm] = useState({
 		username: "",
 		password: "",
 	});
-
 	const submit = async () => {
-		if (!form.username || !form.password) {
-			Alert.alert("Error", "Please fill in all the fields");
-			return;
-		}
+		Alert.alert("Error", "Invalid username or password", [{ text: "OK" }]);
+		return;
 	};
 	return (
-		<SafeAreaView>
-			<ImageBackground
-				source={require("../../assets/images/sky-beach.png")}
-				style={styles.bgImage}
-				resizeMode='cover'>
-				<ScrollView>
-					<View style={styles.viewContainer1}>
-						<Text style={styles.title}>Riptide</Text>
-						<Image
-							source={require("../../assets/icons/vectorWhite.png")}
-							style={{ bottom: 35 }}
-						/>
-						<Text style={styles.subtitle}>Sign In</Text>
+		<SafeAreaView style={{ flex: 1 }}>
+			<ImageBackground source={images.sky} style={{ flex: 1 }} blurRadius={20}>
+				<View style={styles.overlay}>
+					<View style={{ justifyContent: "center", alignItems: "center" }}>
+						<Text style={styles.title}>RipTide</Text>
+						<Image source={icons.vectorWhite} />
 					</View>
-					<Input
-						value={form.username}
-						title='Email'
-						placeholder='Username'
-						otherStyles={{ marginTop: 10 }}
-						handleChangeText={(e) => setForm({ ...form, email: e })}
-					/>
-					<Input
-						value={form.password}
-						title='Password'
-						placeholder='Password'
-						handleChangeText={(e) => setForm({ ...form, password: e })}
-					/>
-					<CustomButton
-						title='Login'
-						specialStyles={styles.loginButton}
-						handlePress={() => router.push("/home")}
-					/>
-					<Text
-						style={{
-							fontFamily: "Poppins-SemiBold",
-							fontSize: 24,
-							textAlign: "center",
-						}}>
-						OR,
-					</Text>
-					<CustomButton
-						title='Sign In with'
-						specialStyles={styles.OAuth}
-						icon={require("../../assets/icons/google.png")}
-					/>
-				</ScrollView>
+					<View style={styles.content}>
+						<Text style={styles.welcomeText}>Welcome Back</Text>
+						<Text style={styles.loginText}>Login to continue</Text>
+						<Input
+							title='Username'
+							value={form.username}
+							placeholder='Username'
+							handleChangeText={(e) => setForm({ ...form, username: e })}
+						/>
+						<Input
+							title='Password'
+							value={form.password}
+							placeholder='Password'
+							handleChangeText={(e) => setForm({ ...form, password: e })}
+						/>
+						<CustomButton
+							title='Log In'
+							specialStyles={styles.button}
+							handlePress={() => router.push("/home")}
+						/>
+						<Text
+							style={{
+								fontSize: 18,
+								fontFamily: "Poppins-SemiBold",
+								marginTop: 10,
+							}}>
+							Not a member?{" "}
+							<Link
+								href='/sign-up'
+								style={{
+									textDecorationLine: "underline",
+								}}>
+								Sign Up
+							</Link>
+						</Text>
+					</View>
+				</View>
 			</ImageBackground>
-			<StatusBar backgroundColor='black' />
 		</SafeAreaView>
 	);
 };
@@ -81,42 +75,44 @@ const SignIn = () => {
 export default SignIn;
 
 const styles = StyleSheet.create({
-	bgImage: {
-		height: "100%",
-	},
-	viewContainer1: {
-		justifyContent: "center",
-		alignItems: "center",
-		marginTop: 10,
-	},
 	title: {
+		fontSize: 75,
+		fontFamily: "Allura-Regular",
 		color: "white",
-		fontSize: 90,
-		fontFamily: "Allison-Regular",
+		textAlign: "center",
 	},
-	subtitle: {
-		color: "white",
+	overlay: {
+		...StyleSheet.absoluteFillObject,
+		backgroundColor: "rgba(0, 0, 0, 0.4)",
+	},
+
+	content: {
+		width: "100%",
+		alignItems: "center",
+	},
+	welcomeText: {
+		fontFamily: "Poppins-Medium",
 		fontSize: 36,
-		fontFamily: "CM-Regular",
-		marginTop: -30,
-		marginBottom: 30,
+		color: "white",
+		marginTop: 30,
+		textAlign: "center",
 	},
-	loginButton: {
-		fontFamily: "CM-Bold",
-		fontSize: 24,
-		backgroundColor: "rgba(255,255,255,0.9)",
-		paddingHorizontal: 60,
-		paddingVertical: 8,
-		borderRadius: 40,
-		marginVertical: 10,
+	loginText: {
+		fontFamily: "Poppins-Medium",
+		fontSize: 18,
+		color: "#BFBCBC",
+		textAlign: "center",
+		marginBottom: 20,
 	},
-	OAuth: {
-		fontFamily: "CM-Bold",
-		fontSize: 24,
-		backgroundColor: "rgba(255,255,255,0.9)",
-		paddingHorizontal: 60,
-		paddingVertical: 8,
-		borderRadius: 40,
-		marginVertical: 10,
+	button: {
+		backgroundColor: "#053A51",
+		color: "white",
+		width: 230,
+		height: 50,
+		borderRadius: 10,
+		textAlign: "center",
+		fontFamily: "Poppins-SemiBold",
+		lineHeight: 50,
+		marginTop: 30,
 	},
 });
