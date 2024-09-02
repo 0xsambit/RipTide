@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 	textinput: {
 		flex: 1,
 		padding: 5,
-		color: "black",
+		color: "white",
 		fontFamily: "Poppins-Medium",
 		fontSize: 15,
 	},

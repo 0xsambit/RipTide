@@ -4,7 +4,7 @@ import {
 	ImageBackground,
 	KeyboardAvoidingView,
 	Platform,
-	ScrollView, // Import ScrollView
+	ScrollView,
 	StyleSheet,
 	Text,
 	View,
@@ -16,7 +16,10 @@ import Input from "../../components/Input";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 
-const SignIn = () => {
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { firebaseAuth } from "../../firebaseConfig";
+
+const SignUp = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [form, setForm] = useState({
 		username: "",
@@ -31,6 +34,23 @@ const SignIn = () => {
 		}
 
 		setIsSubmitting(true);
+
+		try {
+			const userCredential = await createUserWithEmailAndPassword(
+				firebaseAuth,
+				form.email,
+				form.password
+			);
+			const user = userCredential.user;
+
+			Alert.alert("Success", "Account created successfully!", [
+				{ text: "OK", onPress: () => router.push("/sign-in") },
+			]);
+		} catch (error) {
+			Alert.alert("Error", error.message, [{ text: "OK" }]);
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -68,9 +88,10 @@ const SignIn = () => {
 									handleChangeText={(e) => setForm({ ...form, password: e })}
 								/>
 								<CustomButton
-									title='Sign Up'
+									title={isSubmitting ? "Signing Up..." : "Sign Up"}
 									specialStyles={styles.button}
-									handlePress={() => router.push("/home")}
+									handlePress={submit}
+									disabled={isSubmitting}
 								/>
 								<Text
 									style={{
@@ -135,8 +156,9 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default SignUp;
 
+// Add your styles here
 const styles = StyleSheet.create({
 	title: {
 		fontSize: 77,

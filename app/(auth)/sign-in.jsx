@@ -4,7 +4,7 @@ import {
 	ImageBackground,
 	KeyboardAvoidingView,
 	Platform,
-	ScrollView, // Import ScrollView
+	ScrollView,
 	StyleSheet,
 	Text,
 	View,
@@ -16,20 +16,40 @@ import Input from "../../components/Input";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseAuth } from "../../firebaseConfig";
+
 const SignIn = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [form, setForm] = useState({
-		username: "",
+		email: "",
 		password: "",
 	});
 
 	const submit = async () => {
-		if (!form.username || !form.password) {
+		if (!form.email || !form.password) {
 			Alert.alert("Error", "Please fill all fields", [{ text: "OK" }]);
 			return;
 		}
 
 		setIsSubmitting(true);
+
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				firebaseAuth,
+				form.email,
+				form.password
+			);
+			const user = userCredential.user;
+
+			Alert.alert("Success", "Logged in successfully!", [
+				{ text: "OK", onPress: () => router.push("/home") },
+			]);
+		} catch (error) {
+			Alert.alert("Error", error.message, [{ text: "OK" }]);
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -49,10 +69,10 @@ const SignIn = () => {
 								<Text style={styles.welcomeText}>Welcome Back</Text>
 								<Text style={styles.loginText}>Login to continue</Text>
 								<Input
-									title='Username'
-									value={form.username}
-									placeholder='Username'
-									handleChangeText={(e) => setForm({ ...form, username: e })}
+									title='Email'
+									value={form.email}
+									placeholder='Email Address'
+									handleChangeText={(e) => setForm({ ...form, email: e })}
 								/>
 								<Input
 									title='Password'
@@ -61,9 +81,10 @@ const SignIn = () => {
 									handleChangeText={(e) => setForm({ ...form, password: e })}
 								/>
 								<CustomButton
-									title='Log In'
+									title={isSubmitting ? "Logging In..." : "Log In"}
 									specialStyles={styles.button}
-									handlePress={() => router.push("/home")}
+									handlePress={submit}
+									disabled={isSubmitting}
 								/>
 								<Text
 									style={{
@@ -130,6 +151,7 @@ const SignIn = () => {
 
 export default SignIn;
 
+// Add your styles here
 const styles = StyleSheet.create({
 	title: {
 		fontSize: 77,
