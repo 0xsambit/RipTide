@@ -1,12 +1,48 @@
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {
+	Image,
+	ImageBackground,
+	StyleSheet,
+	Text,
+	View,
+	ActivityIndicator,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images, icons } from "../constants";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "../components/CustomButton";
 import { router } from "expo-router";
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../firebaseConfig";
 
 const Index = () => {
+	const [loading, setLoading] = useState(true);
+	const [user, setUser] = useState(null);
+
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+			if (user) {
+				// User is signed in
+				setUser(user);
+				router.push("/home"); // Redirect to the main app screen
+			} else {
+				// User is signed out
+				setUser(null);
+				setLoading(false);
+			}
+		});
+
+		return unsubscribe; // Unsubscribe on unmount
+	}, []);
+
+	if (loading) {
+		return (
+			<View style={styles.loadingContainer}>
+				<ActivityIndicator size='large' color='black' />
+			</View>
+		);
+	}
+
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<ImageBackground source={images.beach2} style={styles.background}>
@@ -33,6 +69,11 @@ const Index = () => {
 export default Index;
 
 const styles = StyleSheet.create({
+	loadingContainer: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+	},
 	background: {
 		flex: 1,
 		justifyContent: "center",
