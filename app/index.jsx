@@ -53,7 +53,7 @@ const Index = () => {
 						</Text>
 					</View>
 					<CustomButton
-						title='Explore'
+						title='Discover the Oceans'
 						specialStyles={styles.button}
 						handlePress={() => router.push("/sign-in")}
 					/>
@@ -68,10 +68,9 @@ export default Index;
 
 const styles = StyleSheet.create({
 	loadingContainer: {
-		// flex: 1,
+		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		heeight: "100%",
 	},
 	background: {
 		flex: 1,
@@ -79,10 +78,9 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	container: {
-		heeight: "100%",
-		justifyContent: "space-between",
+		flex: 1,
+		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: 180,
 	},
 	viewContainer: {
 		justifyContent: "center",
@@ -94,24 +92,25 @@ const styles = StyleSheet.create({
 		fontFamily: "Allura-Regular",
 	},
 	icon: {
-		marginTop: -55,
+		marginTop: -65,
 	},
 	subtitle: {
 		fontFamily: "Poppins-Medium",
 		fontSize: 24,
 		textAlign: "center",
 		marginHorizontal: 30,
-		marginBottom: 20,
+		marginVertical: 40,
 	},
 	button: {
 		backgroundColor: "#0F1E20",
 		color: "white",
-		width: 200,
+		width: 300,
 		height: 50,
 		borderRadius: 10,
 		textAlign: "center",
 		fontFamily: "Poppins-SemiBold",
 		lineHeight: 50,
 		marginTop: 10,
+		paddingHorizontal: 30,
 	},
 });
