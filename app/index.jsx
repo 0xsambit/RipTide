@@ -22,17 +22,15 @@ const Index = () => {
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
 			if (user) {
-				// User is signed in
 				setUser(user);
-				router.push("/home"); // Redirect to the main app screen
+				router.push("/home");
 			} else {
-				// User is signed out
 				setUser(null);
 				setLoading(false);
 			}
 		});
 
-		return unsubscribe; // Unsubscribe on unmount
+		return unsubscribe;
 	}, []);
 
 	if (loading) {
@@ -45,15 +43,15 @@ const Index = () => {
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<ImageBackground source={images.beach2} style={styles.background}>
+			<ImageBackground source={images.beach3} style={styles.background}>
 				<View style={styles.container}>
 					<View style={styles.viewContainer}>
 						<Text style={styles.title}>RipTide</Text>
 						<Image source={icons.vectorBlack} style={styles.icon} />
+						<Text style={styles.subtitle}>
+							Because the ocean deserves respect, and you deserve peace.
+						</Text>
 					</View>
-					<Text style={styles.subtitle}>
-						Because the ocean deserves respect, and you deserve peace.
-					</Text>
 					<CustomButton
 						title='Explore'
 						specialStyles={styles.button}
@@ -70,9 +68,10 @@ export default Index;
 
 const styles = StyleSheet.create({
 	loadingContainer: {
-		flex: 1,
+		// flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
+		heeight: "100%",
 	},
 	background: {
 		flex: 1,
@@ -80,7 +79,8 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	container: {
-		justifyContent: "center",
+		heeight: "100%",
+		justifyContent: "space-between",
 		alignItems: "center",
 		marginBottom: 180,
 	},
@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		textAlign: "center",
 		marginHorizontal: 30,
-		color: "white",
 		marginBottom: 20,
 	},
 	button: {
