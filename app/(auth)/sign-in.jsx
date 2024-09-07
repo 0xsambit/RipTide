@@ -54,7 +54,7 @@ const SignIn = () => {
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<ImageBackground source={images.sky} style={{ flex: 1 }} blurRadius={20}>
+			<ImageBackground source={images.beach5} style={{ flex: 1 }}>
 				<View style={styles.overlay}>
 					<KeyboardAvoidingView
 						style={{ flex: 1 }}
@@ -63,7 +63,7 @@ const SignIn = () => {
 						<ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
 							<View style={{ justifyContent: "center", alignItems: "center" }}>
 								<Text style={styles.title}>RipTide</Text>
-								<Image source={icons.vectorWhite} />
+								<Image source={icons.vectorBlack} style={{ width: 200 }} />
 							</View>
 							<View style={styles.content}>
 								<Text style={styles.welcomeText}>Welcome Back</Text>
@@ -91,6 +91,7 @@ const SignIn = () => {
 										fontSize: 18,
 										fontFamily: "Poppins-SemiBold",
 										marginTop: 10,
+										color: "white",
 									}}>
 									Not a member?{" "}
 									<Link
@@ -108,6 +109,7 @@ const SignIn = () => {
 										fontFamily: "Poppins-SemiBold",
 										marginTop: 70,
 										fontSize: 18,
+										color: "white",
 									}}>
 									Privacy Policy
 								</Link>
@@ -125,6 +127,7 @@ const SignIn = () => {
 											marginHorizontal: 10,
 											fontWeight: "bold",
 											lineHeight: 20,
+											color: "white",
 										}}>
 										Or
 									</Text>
@@ -156,13 +159,13 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 77,
 		fontFamily: "Allura-Regular",
-		color: "white",
+
 		textAlign: "center",
 		transform: [{ translateY: 50 }],
 	},
 	overlay: {
 		...StyleSheet.absoluteFillObject,
-		backgroundColor: "rgba(0, 0, 0, 0.3)",
+		backgroundColor: "rgba(0, 0, 0, 0.1)",
 	},
 	content: {
 		width: "100%",
@@ -171,14 +174,12 @@ const styles = StyleSheet.create({
 	welcomeText: {
 		fontFamily: "Poppins-Medium",
 		fontSize: 36,
-		color: "white",
 		marginTop: 30,
 		textAlign: "center",
 	},
 	loginText: {
 		fontFamily: "Poppins-Medium",
 		fontSize: 18,
-		color: "#BFBCBC",
 		textAlign: "center",
 		marginBottom: 20,
 	},
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
 	},
 	line: {
 		height: 1,
-		backgroundColor: "black",
+		backgroundColor: "white",
 		flex: 1,
 	},
 	icon: {
