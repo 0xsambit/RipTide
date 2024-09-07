@@ -10,7 +10,7 @@ import profile from "../assets/icons/profile.png";
 import rightArrow from "../assets/icons/right-arrow.png";
 import search from "../assets/icons/search.png";
 import vectorBlack from "../assets/icons/vectorBlack.png";
-import vectorWhite from "../assets/icons/vectorWhite.png";
+import vectorBlack2 from "../assets/icons/vectorBlack2.png";
 export default {
 	bookmark,
 	eyeHide,
@@ -24,5 +24,5 @@ export default {
 	rightArrow,
 	search,
 	vectorBlack,
-	vectorWhite,
+	vectorBlack2,
 };
