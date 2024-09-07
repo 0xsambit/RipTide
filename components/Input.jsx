@@ -1,6 +1,5 @@
 import {
 	StyleSheet,
-	Text,
 	TextInput,
 	TouchableOpacity,
 	View,
@@ -18,7 +17,7 @@ const Input = ({ title, value, placeholder, handleChangeText }) => {
 					style={styles.textinput}
 					value={value}
 					placeholder={placeholder}
-					placeholderTextColor='rgba(255,255,255,0.7)'
+					placeholderTextColor='black'
 					secureTextEntry={title === "Password" && !showPassword}
 					onChangeText={handleChangeText}
 					blur
@@ -49,14 +48,14 @@ const styles = StyleSheet.create({
 		width: "75%",
 		flexDirection: "row",
 		borderBottomWidth: 2,
-		borderBottomColor: "rgba(255,255,255,0.7)",
+		borderBottomColor: "black",
 	},
 	textinput: {
 		flex: 1,
 		padding: 5,
-		color: "white",
-		fontFamily: "Poppins-Medium",
+		fontFamily: "Poppins-SemiBold",
 		fontSize: 15,
+		color: "white",
 	},
 
 	eyeContainer: {
@@ -65,6 +64,6 @@ const styles = StyleSheet.create({
 	eye: {
 		width: 25,
 		height: 25,
-		tintColor: "#fff",
+		tintColor: "black",
 	},
 });
