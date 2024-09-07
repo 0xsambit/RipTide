@@ -55,98 +55,96 @@ const SignIn = () => {
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<ImageBackground source={images.beach5} style={{ flex: 1 }}>
-				<View style={styles.overlay}>
-					<KeyboardAvoidingView
-						style={{ flex: 1 }}
-						behavior={Platform.OS === "ios" ? "padding" : "height"}
-						keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
-						<ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
-							<View style={{ justifyContent: "center", alignItems: "center" }}>
-								<Text style={styles.title}>RipTide</Text>
-								<Image source={icons.vectorBlack} style={{ width: 200 }} />
-							</View>
-							<View style={styles.content}>
-								<Text style={styles.welcomeText}>Welcome Back</Text>
-								<Text style={styles.loginText}>Login to continue</Text>
-								<Input
-									title='Email'
-									value={form.email}
-									placeholder='Email Address'
-									handleChangeText={(e) => setForm({ ...form, email: e })}
-								/>
-								<Input
-									title='Password'
-									value={form.password}
-									placeholder='Password'
-									handleChangeText={(e) => setForm({ ...form, password: e })}
-								/>
-								<CustomButton
-									title={isSubmitting ? "Logging In..." : "Log In"}
-									specialStyles={styles.button}
-									handlePress={submit}
-									disabled={isSubmitting}
-								/>
-								<Text
-									style={{
-										fontSize: 18,
-										fontFamily: "Poppins-SemiBold",
-										marginTop: 10,
-										color: "white",
-									}}>
-									Not a member?{" "}
-									<Link
-										href='/sign-up'
-										style={{
-											textDecorationLine: "underline",
-										}}>
-										Sign Up
-									</Link>
-								</Text>
+				<KeyboardAvoidingView
+					style={{ flex: 1 }}
+					behavior={Platform.OS === "ios" ? "padding" : "height"}
+					keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
+					<ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
+						<View style={{ justifyContent: "center", alignItems: "center" }}>
+							<Text style={styles.title}>RipTide</Text>
+							<Image source={icons.vectorBlack2} />
+						</View>
+						<View style={styles.content}>
+							<Text style={styles.welcomeText}>Welcome Back</Text>
+							<Text style={styles.loginText}>Login to continue</Text>
+							<Input
+								title='Email'
+								value={form.email}
+								placeholder='Email Address'
+								handleChangeText={(e) => setForm({ ...form, email: e })}
+							/>
+							<Input
+								title='Password'
+								value={form.password}
+								placeholder='Password'
+								handleChangeText={(e) => setForm({ ...form, password: e })}
+							/>
+							<CustomButton
+								title={isSubmitting ? "Logging In..." : "Log In"}
+								specialStyles={styles.button}
+								handlePress={submit}
+								disabled={isSubmitting}
+							/>
+							<Text
+								style={{
+									fontSize: 18,
+									fontFamily: "Poppins-SemiBold",
+									marginTop: 30,
+									color: "white",
+								}}>
+								Not a member?{" "}
 								<Link
-									href='#'
+									href='/sign-up'
 									style={{
 										textDecorationLine: "underline",
-										fontFamily: "Poppins-SemiBold",
-										marginTop: 70,
-										fontSize: 18,
+									}}>
+									Sign Up
+								</Link>
+							</Text>
+							<Link
+								href='#'
+								style={{
+									textDecorationLine: "underline",
+									fontFamily: "Poppins-SemiBold",
+									marginTop: 50,
+									fontSize: 18,
+									color: "white",
+								}}>
+								Privacy Policy
+							</Link>
+							<View
+								style={{
+									flexDirection: "row",
+									alignItems: "center",
+									marginTop: 20,
+								}}>
+								<View style={[styles.line, { marginLeft: 50 }]}></View>
+								<Text
+									style={{
+										fontSize: 16,
+										textAlign: "center",
+										marginHorizontal: 10,
+										fontWeight: "bold",
+										lineHeight: 20,
 										color: "white",
 									}}>
-									Privacy Policy
-								</Link>
-								<View
-									style={{
-										flexDirection: "row",
-										alignItems: "center",
-										marginTop: 20,
-									}}>
-									<View style={[styles.line, { marginLeft: 50 }]}></View>
-									<Text
-										style={{
-											fontSize: 16,
-											textAlign: "center",
-											marginHorizontal: 10,
-											fontWeight: "bold",
-											lineHeight: 20,
-											color: "white",
-										}}>
-										Or
-									</Text>
-									<View style={[styles.line, { marginRight: 50 }]}></View>
-								</View>
-								<View
-									style={{
-										flexDirection: "row",
-										width: "100%",
-										alignItems: "center",
-										justifyContent: "space-evenly",
-									}}>
-									<Image source={icons.google} style={styles.icon} />
-									<Image source={icons.facebook} style={styles.icon} />
-								</View>
+									Or
+								</Text>
+								<View style={[styles.line, { marginRight: 50 }]}></View>
 							</View>
-						</ScrollView>
-					</KeyboardAvoidingView>
-				</View>
+							<View
+								style={{
+									flexDirection: "row",
+									width: "100%",
+									alignItems: "center",
+									justifyContent: "space-evenly",
+								}}>
+								<Image source={icons.google} style={styles.icon} />
+								<Image source={icons.facebook} style={styles.icon} />
+							</View>
+						</View>
+					</ScrollView>
+				</KeyboardAvoidingView>
 			</ImageBackground>
 		</SafeAreaView>
 	);
@@ -163,10 +161,7 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		transform: [{ translateY: 50 }],
 	},
-	overlay: {
-		...StyleSheet.absoluteFillObject,
-		backgroundColor: "rgba(0, 0, 0, 0.1)",
-	},
+
 	content: {
 		width: "100%",
 		alignItems: "center",

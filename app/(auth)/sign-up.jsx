@@ -55,102 +55,103 @@ const SignUp = () => {
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<ImageBackground source={images.sky} style={{ flex: 1 }} blurRadius={20}>
-				<View style={styles.overlay}>
-					<KeyboardAvoidingView
-						style={{ flex: 1 }}
-						behavior={Platform.OS === "ios" ? "padding" : "height"}
-						keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
-						<ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
-							<View style={{ justifyContent: "center", alignItems: "center" }}>
-								<Text style={styles.title}>RipTide</Text>
-								<Image source={icons.vectorWhite} />
-							</View>
-							<View style={styles.content}>
-								<Text style={styles.welcomeText}>Welcome</Text>
-								<Text style={styles.loginText}>Sign Up</Text>
-								<Input
-									title='Username'
-									value={form.username}
-									placeholder='Username'
-									handleChangeText={(e) => setForm({ ...form, username: e })}
-								/>
-								<Input
-									title='Email'
-									value={form.email}
-									placeholder='Email'
-									handleChangeText={(e) => setForm({ ...form, email: e })}
-								/>
-								<Input
-									title='Password'
-									value={form.password}
-									placeholder='Password'
-									handleChangeText={(e) => setForm({ ...form, password: e })}
-								/>
-								<CustomButton
-									title={isSubmitting ? "Signing Up..." : "Sign Up"}
-									specialStyles={styles.button}
-									handlePress={submit}
-									disabled={isSubmitting}
-								/>
-								<Text
-									style={{
-										fontSize: 18,
-										fontFamily: "Poppins-SemiBold",
-										marginTop: 10,
-									}}>
-									Already a member?{" "}
-									<Link
-										href='/sign-in'
-										style={{
-											textDecorationLine: "underline",
-										}}>
-										Log In
-									</Link>
-								</Text>
+			<ImageBackground source={images.beach5} style={{ flex: 1 }}>
+				<KeyboardAvoidingView
+					style={{ flex: 1 }}
+					behavior={Platform.OS === "ios" ? "padding" : "height"}
+					keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
+					<ScrollView contentContainerStyle={{ flexGrow: 1 }} bounces={false}>
+						<View style={{ justifyContent: "center", alignItems: "center" }}>
+							<Text style={styles.title}>RipTide</Text>
+							<Image source={icons.vectorBlack2} />
+						</View>
+						<View style={styles.content}>
+							<Text style={styles.welcomeText}>Welcome</Text>
+							<Text style={styles.loginText}>Sign Up</Text>
+							<Input
+								title='Username'
+								value={form.username}
+								placeholder='Username'
+								handleChangeText={(e) => setForm({ ...form, username: e })}
+							/>
+							<Input
+								title='Email'
+								value={form.email}
+								placeholder='Email'
+								handleChangeText={(e) => setForm({ ...form, email: e })}
+							/>
+							<Input
+								title='Password'
+								value={form.password}
+								placeholder='Password'
+								handleChangeText={(e) => setForm({ ...form, password: e })}
+							/>
+							<CustomButton
+								title={isSubmitting ? "Signing Up..." : "Sign Up"}
+								specialStyles={styles.button}
+								handlePress={submit}
+								disabled={isSubmitting}
+							/>
+							<Text
+								style={{
+									fontSize: 18,
+									fontFamily: "Poppins-SemiBold",
+									marginTop: 20,
+									color: "white",
+								}}>
+								Already a member?{" "}
 								<Link
-									href='#'
+									href='/sign-in'
 									style={{
 										textDecorationLine: "underline",
-										fontFamily: "Poppins-SemiBold",
-										marginTop: 30,
-										fontSize: 18,
 									}}>
-									Privacy Policy
+									Log In
 								</Link>
-								<View
+							</Text>
+							<Link
+								href='#'
+								style={{
+									textDecorationLine: "underline",
+									fontFamily: "Poppins-SemiBold",
+									marginTop: 30,
+									fontSize: 18,
+									color: "white",
+								}}>
+								Privacy Policy
+							</Link>
+							<View
+								style={{
+									flexDirection: "row",
+									alignItems: "center",
+									marginTop: 20,
+								}}>
+								<View style={[styles.line, { marginLeft: 50 }]}></View>
+								<Text
 									style={{
-										flexDirection: "row",
-										alignItems: "center",
-										marginTop: 20,
+										fontSize: 16,
+										textAlign: "center",
+										marginHorizontal: 10,
+										fontWeight: "bold",
+										lineHeight: 20,
+										color: "white",
 									}}>
-									<View style={[styles.line, { marginLeft: 50 }]}></View>
-									<Text
-										style={{
-											fontSize: 16,
-											textAlign: "center",
-											marginHorizontal: 10,
-											fontWeight: "bold",
-											lineHeight: 20,
-										}}>
-										Or
-									</Text>
-									<View style={[styles.line, { marginRight: 50 }]}></View>
-								</View>
-								<View
-									style={{
-										flexDirection: "row",
-										width: "100%",
-										alignItems: "center",
-										justifyContent: "space-evenly",
-									}}>
-									<Image source={icons.google} style={styles.icon} />
-									<Image source={icons.facebook} style={styles.icon} />
-								</View>
+									Or
+								</Text>
+								<View style={[styles.line, { marginRight: 50 }]}></View>
 							</View>
-						</ScrollView>
-					</KeyboardAvoidingView>
-				</View>
+							<View
+								style={{
+									flexDirection: "row",
+									width: "100%",
+									alignItems: "center",
+									justifyContent: "space-evenly",
+								}}>
+								<Image source={icons.google} style={styles.icon} />
+								<Image source={icons.facebook} style={styles.icon} />
+							</View>
+						</View>
+					</ScrollView>
+				</KeyboardAvoidingView>
 			</ImageBackground>
 		</SafeAreaView>
 	);
@@ -161,31 +162,25 @@ export default SignUp;
 // Add your styles here
 const styles = StyleSheet.create({
 	title: {
-		fontSize: 77,
+		fontSize: 80,
 		fontFamily: "Allura-Regular",
-		color: "white",
 		textAlign: "center",
 		transform: [{ translateY: 50 }],
 	},
-	overlay: {
-		...StyleSheet.absoluteFillObject,
-		backgroundColor: "rgba(0, 0, 0, 0.3)",
-	},
+
 	content: {
 		width: "100%",
 		alignItems: "center",
 	},
 	welcomeText: {
 		fontFamily: "Poppins-Medium",
-		fontSize: 36,
-		color: "white",
-		marginTop: 20,
+		fontSize: 38,
+
 		textAlign: "center",
 	},
 	loginText: {
 		fontFamily: "Poppins-Medium",
 		fontSize: 18,
-		color: "#BFBCBC",
 		textAlign: "center",
 	},
 	button: {
@@ -197,11 +192,11 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontFamily: "Poppins-SemiBold",
 		lineHeight: 50,
-		marginTop: 30,
+		marginTop: 40,
 	},
 	line: {
 		height: 1,
-		backgroundColor: "black",
+		backgroundColor: "white",
 		flex: 1,
 	},
 	icon: {
