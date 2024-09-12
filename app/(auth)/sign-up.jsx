@@ -144,7 +144,8 @@ const SignUp = () => {
 									flexDirection: "row",
 									width: "100%",
 									alignItems: "center",
-									justifyContent: "space-evenly",
+									justifyContent: "center",
+									gap: 80,
 								}}>
 								<Image source={icons.google} style={styles.icon} />
 								<Image source={icons.facebook} style={styles.icon} />
