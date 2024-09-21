@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+	Image,
+	KeyboardAvoidingView,
+	Platform,
+	StyleSheet,
+	Text,
+	View,
+} from "react-native";
 import React from "react";
 import { Stack, Tabs } from "expo-router";
 import { icons } from "../../constants";
@@ -24,7 +31,9 @@ const TabIcon = ({ color, focused, icon, name }) => {
 };
 const TabsLayout = () => {
 	return (
-		<>
+		<KeyboardAvoidingView
+			style={{ flex: 1 }}
+			behavior={Platform.OS === "ios" ? "padding" : "height"}>
 			<Tabs
 				screenOptions={{
 					tabBarActiveTintColor: "#1f292a",
@@ -82,7 +91,7 @@ const TabsLayout = () => {
 					}}
 				/>
 			</Tabs>
-		</>
+		</KeyboardAvoidingView>
 	);
 };
 

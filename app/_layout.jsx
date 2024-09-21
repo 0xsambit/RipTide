@@ -15,6 +15,8 @@ const RootLayout = () => {
 		"Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
 		"Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
 		"Allura-Regular": require("../assets/fonts/Allura-Regular.ttf"),
+		"Amita-Regular": require("../assets/fonts/Amita-Regular.ttf"),
+		"Amita-Bold": require("../assets/fonts/Amita-Bold.ttf"),
 	});
 	useEffect(() => {
 		if (error) throw error;
