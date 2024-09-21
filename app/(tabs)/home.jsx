@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
 	ScrollView,
 	StyleSheet,
@@ -15,6 +14,7 @@ import { router } from "expo-router";
 import { signOut } from "firebase/auth";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "../../constants";
+import VideoCard from "../../components/VideoCard";
 const Home = () => {
 	const handleLogout = async () => {
 		console.log("Button Pressed");
@@ -63,7 +63,7 @@ const Home = () => {
 								keyboardType='default'
 								editable={true}
 								multiline={false}
-								placeholderTextColor='white'
+								placeholderTextColor='#B4B4B4'
 							/>
 							<Image
 								source={icons.rightArrow}
@@ -76,7 +76,12 @@ const Home = () => {
 						<Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
 							Nearby Beaches
 						</Text>
-						<Text style={{ fontFamily: "Poppins-Medium", fontSize: 18 }}>
+						<VideoCard
+							text='Palolem Beach, Goa'
+							subtitle='Get yourself lost in the White Sands, swaying palm trees'
+						/>
+						{/* Filters  */}
+						{/* <Text style={{ fontFamily: "Poppins-Medium", fontSize: 18 }}>
 							Filter by your choice
 						</Text>
 						<View style={styles.choices}>
@@ -107,7 +112,8 @@ const Home = () => {
 									Secluded
 								</Text>
 							</View>
-						</View>
+						</View> */}
+						{/* Filters */}
 					</View>
 				</View>
 			</ScrollView>
@@ -165,7 +171,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fffcef",
 		height: "100%",
 		width: "100%",
-		padding: 20,
+		padding: 15,
 	},
 	choices: {
 		flexDirection: "row",
