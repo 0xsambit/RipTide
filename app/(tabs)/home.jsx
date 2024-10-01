@@ -6,6 +6,8 @@ import {
 	Alert,
 	TextInput,
 	Image,
+	Button,
+	TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { firebaseAuth } from "../../firebaseConfig"; // Ensure this path is correct
@@ -13,8 +15,9 @@ import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
 import { signOut } from "firebase/auth";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { icons } from "../../constants";
+import { icons, videos } from "../../constants";
 import VideoCard from "../../components/VideoCard";
+
 const Home = () => {
 	const handleLogout = async () => {
 		console.log("Button Pressed");
@@ -29,8 +32,8 @@ const Home = () => {
 	};
 
 	return (
-		<SafeAreaView style={{ width: "100%" }}>
-			<ScrollView>
+		<SafeAreaView style={{ width: "100%", backgroundColor: "#1f292a" }}>
+			<ScrollView style={{ backgroundColor: "#1f292a" }}>
 				<View>
 					<View style={styles.viewContainer1}>
 						<Text
@@ -43,7 +46,7 @@ const Home = () => {
 						</Text>
 						<CustomButton
 							title='Logout'
-							onPress={handleLogout}
+							handlePress={handleLogout}
 							specialStyles={styles.specialStyles}
 						/>
 					</View>
@@ -56,6 +59,7 @@ const Home = () => {
 							}}>
 							Checkout Beaches
 						</Text>
+
 						<View style={styles.inputContainer}>
 							<TextInput
 								placeholder='Search beach name'
@@ -79,25 +83,56 @@ const Home = () => {
 						<VideoCard
 							text='Palolem Beach, Goa'
 							subtitle='Get yourself lost in the White Sands, swaying palm trees'
+							uri={videos.goa}
 						/>
+
+						<VideoCard
+							text='Digha Beach, West Bengal'
+							subtitle='Get yourself lost in the White Sands, swaying palm trees'
+							uri={videos.digha}
+						/>
+						<VideoCard
+							text='Lakshadeep Beach'
+							subtitle='Get yourself lost in the White Sands, swaying palm trees'
+							uri={videos.laksha}
+						/>
+						<View
+							style={{
+								justifyContent: "center",
+								marginHorizontal: 120,
+								marginTop: 10,
+							}}>
+							<TouchableOpacity
+								onPress={() => router.push("/beach")}
+								activeOpacity={0.7}>
+								<Text style={styles.button}>See More</Text>
+							</TouchableOpacity>
+						</View>
+
 						{/* Filters  */}
-						{/* <Text style={{ fontFamily: "Poppins-Medium", fontSize: 18 }}>
+						<Text
+							style={{
+								fontFamily: "Poppins-SemiBold",
+								fontSize: 20,
+								marginTop: 30,
+								textDecorationLine: "underline",
+							}}>
 							Filter by your choice
 						</Text>
 						<View style={styles.choices}>
-							<View style={styles.icons}>
+							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image source={icons.sun} style={{ width: 30, height: 30 }} />
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
 									Adventure
 								</Text>
-							</View>
-							<View style={styles.icons}>
+							</TouchableOpacity>
+							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image source={icons.waves} style={{ width: 25, height: 25 }} />
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
 									Surfing
 								</Text>
-							</View>
-							<View style={styles.icons}>
+							</TouchableOpacity>
+							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image
 									source={icons.privacy}
 									style={{ width: 25, height: 25 }}
@@ -105,14 +140,14 @@ const Home = () => {
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
 									Family
 								</Text>
-							</View>
-							<View style={styles.icons}>
+							</TouchableOpacity>
+							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image source={icons.hand} style={{ width: 25, height: 25 }} />
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
 									Secluded
 								</Text>
-							</View>
-						</View> */}
+							</TouchableOpacity>
+						</View>
 						{/* Filters */}
 					</View>
 				</View>
@@ -137,9 +172,9 @@ const styles = StyleSheet.create({
 	specialStyles: {
 		color: "white",
 		backgroundColor: "rgba(124, 124, 124, 0.4)",
-		paddingVertical: 8,
+		paddingVertical: 6,
 		paddingHorizontal: 20,
-		borderRadius: 20,
+		borderRadius: 15,
 		fontSize: 14,
 		transform: [{ translateX: 65 }],
 	},
@@ -183,5 +218,15 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		gap: 5,
+	},
+	button: {
+		fontFamily: "Poppins-Medium",
+		fontSize: 16,
+		color: "white",
+		backgroundColor: "#1f292a",
+		paddingVertical: 8,
+		borderRadius: 10,
+		textAlign: "center",
+		marginTop: 20,
 	},
 });

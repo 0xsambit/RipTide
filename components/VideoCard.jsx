@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Video } from "expo-av";
-import { videos } from "../constants/index";
-const VideoCard = ({ text, subtitle }) => {
+const VideoCard = ({ text, subtitle, uri }) => {
 	return (
 		<View>
 			<Video
-				source={videos.goa}
+				source={uri}
 				style={{ width: "100%", height: 200, marginTop: 10 }}
 				shouldPlay
 				resizeMode='cover'
+				isMuted
 				isLooping
 			/>
 			<Text style={styles.headtext}>{text}</Text>
