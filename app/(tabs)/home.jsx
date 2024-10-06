@@ -81,13 +81,13 @@ const Home = () => {
 							Nearby Beaches
 						</Text>
 						<VideoCard
-							text='Palolem Beach, Goa'
+							text='Palolem Beach'
 							subtitle='Get yourself lost in the White Sands, swaying palm trees'
 							uri={videos.goa}
 						/>
 
 						<VideoCard
-							text='Digha Beach, West Bengal'
+							text='Digha Beach'
 							subtitle='Get yourself lost in the White Sands, swaying palm trees'
 							uri={videos.digha}
 						/>
