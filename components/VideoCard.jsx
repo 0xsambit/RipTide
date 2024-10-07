@@ -2,28 +2,31 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Video } from "expo-av";
 import axios from "axios";
-import CustomButton from "./CustomButton";
+
 const VideoCard = ({ text, subtitle, uri }) => {
 	const [data, setData] = useState(null);
+
+	const location = encodeURIComponent(text);
 
 	const handleData = async () => {
 		try {
 			const response = await axios.get(
-				`https://run.mocky.io/v3/1668f4a7-e999-4ec4-8f86-bc3849be1d34`
+				`http://api.weatherapi.com/v1/current.json?q=${location}&key=80aaacd93a83479c968171306240710`
 			);
-			setData(response.data);
+			setData(response.data.current); // Access the 'current' key in the response
 		} catch (error) {
-			console.log(error);
+			console.log(error.response ? error.response.data : error.message);
 		}
 	};
 
 	useEffect(() => {
 		handleData();
 	}, []);
+
 	return (
 		<View>
 			<Video
-				source={uri}
+				source={{ uri }}
 				style={{ width: "100%", height: 200, marginTop: 10 }}
 				shouldPlay
 				resizeMode='cover'
@@ -46,7 +49,7 @@ const VideoCard = ({ text, subtitle, uri }) => {
 								fontSize: 14,
 								marginTop: 10,
 							}}>
-							Temperature: {data.temperature}
+							Temperature: {data.temp_c}°C
 						</Text>
 						<Text
 							style={{
@@ -54,7 +57,7 @@ const VideoCard = ({ text, subtitle, uri }) => {
 								fontSize: 14,
 								marginBottom: 10,
 							}}>
-							Cloud: {data.cloudCover}
+							Cloud: {data.cloud}%
 						</Text>
 					</View>
 					<TouchableOpacity

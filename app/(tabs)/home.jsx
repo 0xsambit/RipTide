@@ -92,7 +92,7 @@ const Home = () => {
 							uri={videos.digha}
 						/>
 						<VideoCard
-							text='Lakshadeep Beach'
+							text='Lakshadweep'
 							subtitle='Get yourself lost in the White Sands, swaying palm trees'
 							uri={videos.laksha}
 						/>
