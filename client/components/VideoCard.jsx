@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Video } from "expo-av";
 import axios from "axios";
-import CustomButton from "./CustomButton";
+
 const VideoCard = ({ text, subtitle, uri }) => {
 	const [data, setData] = useState(null);
 

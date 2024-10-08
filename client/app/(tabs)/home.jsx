@@ -6,11 +6,10 @@ import {
 	Alert,
 	TextInput,
 	Image,
-	Button,
 	TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { firebaseAuth } from "../../firebaseConfig"; // Ensure this path is correct
+import { firebaseAuth } from "../../firebaseConfig";
 import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
 import { signOut } from "firebase/auth";
@@ -109,7 +108,6 @@ const Home = () => {
 							</TouchableOpacity>
 						</View>
 
-						{/* Filters  */}
 						<Text
 							style={{
 								fontFamily: "Poppins-SemiBold",
@@ -123,13 +121,13 @@ const Home = () => {
 							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image source={icons.sun} style={{ width: 30, height: 30 }} />
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
-									Adventure
+									Water Sports
 								</Text>
 							</TouchableOpacity>
 							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image source={icons.waves} style={{ width: 25, height: 25 }} />
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
-									Surfing
+									Beach Activity
 								</Text>
 							</TouchableOpacity>
 							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
@@ -138,17 +136,16 @@ const Home = () => {
 									style={{ width: 25, height: 25 }}
 								/>
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
-									Family
+									Acceessibility
 								</Text>
 							</TouchableOpacity>
 							<TouchableOpacity style={styles.icons} activeOpacity={0.5}>
 								<Image source={icons.hand} style={{ width: 25, height: 25 }} />
 								<Text style={{ fontFamily: "Poppins-Medium", fontSize: 12.5 }}>
-									Secluded
+									Nightlife
 								</Text>
 							</TouchableOpacity>
 						</View>
-						{/* Filters */}
 					</View>
 				</View>
 			</ScrollView>
