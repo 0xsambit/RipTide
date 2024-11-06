@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Video } from "expo-av";
 import axios from "axios";
-
+import {API_KEY} from "@env";
 const VideoCard = ({ text, subtitle, uri }) => {
 	const [data, setData] = useState(null);
 
@@ -11,7 +11,7 @@ const VideoCard = ({ text, subtitle, uri }) => {
 	const handleData = async () => {
 		try {
 			const response = await axios.get(
-				`http://api.weatherapi.com/v1/current.json?q=${location}&key=80aaacd93a83479c968171306240710`
+				`http://api.weatherapi.com/v1/current.json?q=${location}&key=${API_KEY}`
 			);
 
 			setData(response.data.current);
